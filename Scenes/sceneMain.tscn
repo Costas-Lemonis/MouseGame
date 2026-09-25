@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dvyigo2n7nyfx" path="res://Sprites/empty-orange-circle-png-0.png" id="1_iltfy"]
 [ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://laser.gd" id="1_mqgry"]
 [ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://cat_movement.gd" id="3_0ofg4"]
+[ext_resource type="Script" uid="uid://b8wwasljaddfw" path="res://fishSpawner.gd" id="4_lietn"]
+[ext_resource type="PackedScene" uid="uid://djk4ky5ff8e5n" path="res://Scenes/fish.tscn" id="5_37aao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_snp7k"]
+size = Vector2(642.1052, 536.8422)
 
 [node name="Node2D" type="Node2D" unique_id=1064268551]
 
@@ -17,20 +18,24 @@ texture = ExtResource("1_iltfy")
 script = ExtResource("1_mqgry")
 
 [node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
-position = Vector2(76.795, 64)
+position = Vector2(76.795, 545)
 scale = Vector2(0.095, 0.095)
+collision_layer = 2
 script = ExtResource("3_0ofg4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cat" unique_id=744477204]
 texture = ExtResource("1_iltfy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1824263628]
-position = Vector2(104, 71)
+position = Vector2(0, -5.2631836)
 shape = SubResource("RectangleShape2D_hyhkd")
 
-[node name="Fish" type="Area2D" parent="." unique_id=972689782]
+[node name="FishSpawner" type="Node2D" parent="." unique_id=996015113]
+script = ExtResource("4_lietn")
+fish_scene = ExtResource("5_37aao")
 
-[node name="Sprite2D" type="Sprite2D" parent="Fish" unique_id=2113599826]
+[node name="Timer" type="Timer" parent="FishSpawner" unique_id=1186930914]
+wait_time = 2.0
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish" unique_id=1924128934]
-shape = SubResource("CircleShape2D_snp7k")
+[connection signal="timeout" from="FishSpawner/Timer" to="FishSpawner" method="_on_timer_timeout"]

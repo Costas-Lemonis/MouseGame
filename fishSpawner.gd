@@ -1,11 +1,21 @@
-extends Node
+extends Node2D
 
+@export var fish_scene : PackedScene
+@export var max_fish := 3
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func spawn_fish():
 
+	if get_tree().get_nodes_in_group("fish").size() >= max_fish:
+		return
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var fish = fish_scene.instantiate()
+
+	fish.position = Vector2(
+		randf_range(50, 1150),
+		randf_range(50, 650)
+	)
+
+	get_parent().add_child(fish)
+
+func _on_timer_timeout():
+	spawn_fish()
