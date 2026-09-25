@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://ddjlqyhsi7wte"]
 
+[ext_resource type="Texture2D" uid="uid://dvyigo2n7nyfx" path="res://Sprites/empty-orange-circle-png-0.png" id="1_iltfy"]
+[ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://laser.gd" id="1_mqgry"]
+[ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://cat_movement.gd" id="3_0ofg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snp7k"]
+
 [node name="Node2D" type="Node2D" unique_id=1064268551]
+
+[node name="Laser" type="Sprite2D" parent="." unique_id=764337568]
+position = Vector2(540, 360)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("1_iltfy")
+script = ExtResource("1_mqgry")
+
+[node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
+position = Vector2(76.795, 64)
+scale = Vector2(0.095, 0.095)
+script = ExtResource("3_0ofg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cat" unique_id=744477204]
+texture = ExtResource("1_iltfy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1824263628]
+position = Vector2(104, 71)
+shape = SubResource("RectangleShape2D_hyhkd")
+
+[node name="Fish" type="Area2D" parent="." unique_id=972689782]
+
+[node name="Sprite2D" type="Sprite2D" parent="Fish" unique_id=2113599826]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish" unique_id=1924128934]
+shape = SubResource("CircleShape2D_snp7k")
