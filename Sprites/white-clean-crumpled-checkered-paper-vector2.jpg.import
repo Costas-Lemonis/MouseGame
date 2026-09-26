@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvyigo2n7nyfx"
-path="res://.godot/imported/empty-orange-circle-png-0.png-0a3e06c0ad9e7beadb34e57413a5cfc6.ctex"
+uid="uid://es8rppfyjllf"
+path="res://.godot/imported/white-clean-crumpled-checkered-paper-vector2.jpg-a087a73bc93fa9fcc1479cfdb562090f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/empty-orange-circle-png-0.png"
-dest_files=["res://.godot/imported/empty-orange-circle-png-0.png-0a3e06c0ad9e7beadb34e57413a5cfc6.ctex"]
+source_file="res://Sprites/white-clean-crumpled-checkered-paper-vector2.jpg"
+dest_files=["res://.godot/imported/white-clean-crumpled-checkered-paper-vector2.jpg-a087a73bc93fa9fcc1479cfdb562090f.ctex"]
 
 [params]
 

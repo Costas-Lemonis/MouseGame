@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dvruyqf5kgidj"]
+
+[ext_resource type="Script" uid="uid://yi3s6tdbksre" path="res://Scenes/Menu.gd" id="1_ih1ql"]
+
+[node name="MainMenu" type="Control" unique_id=321014986]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ih1ql")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=208997261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1201408671]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 190.0
+offset_right = -2.0
+offset_bottom = 263.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 53
+text = "Cat vs Laser"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1649226312]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49800003
+anchor_top = 0.596
+anchor_right = 0.49800003
+anchor_bottom = 0.596
+offset_left = -73.696045
+offset_top = -26.208008
+offset_right = 74.304504
+offset_bottom = 26.291992
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

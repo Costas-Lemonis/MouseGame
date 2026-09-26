@@ -1,40 +1,87 @@
 [gd_scene format=3 uid="uid://ddjlqyhsi7wte"]
 
-[ext_resource type="Texture2D" uid="uid://bc4cu8spxejuu" path="res://Sprites/1000_F_435971308_aTWD3k5hitGplZPfhN1ReEDf7wmzigk8.jpg" id="1_86yrr"]
-[ext_resource type="Texture2D" uid="uid://dvyigo2n7nyfx" path="res://Sprites/empty-orange-circle-png-0.png" id="1_iltfy"]
-[ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://laser.gd" id="1_mqgry"]
-[ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://cat_movement.gd" id="3_0ofg4"]
-[ext_resource type="Script" uid="uid://b8wwasljaddfw" path="res://fishSpawner.gd" id="4_lietn"]
+[ext_resource type="Script" uid="uid://bs24jjnft17ro" path="res://Scripts/mainScene.gd" id="1_iv07e"]
+[ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://Scripts/laser.gd" id="1_mqgry"]
+[ext_resource type="Texture2D" uid="uid://es8rppfyjllf" path="res://Sprites/white-clean-crumpled-checkered-paper-vector2.jpg" id="2_epkv8"]
+[ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://Scripts/cat_movement.gd" id="3_0ofg4"]
+[ext_resource type="Texture2D" uid="uid://ce1c0cj8b5n2m" path="res://Sprites/Characters/laser.png" id="3_aou6w"]
+[ext_resource type="Script" uid="uid://b8wwasljaddfw" path="res://Scripts/fishSpawner.gd" id="4_lietn"]
 [ext_resource type="PackedScene" uid="uid://djk4ky5ff8e5n" path="res://Scenes/fish.tscn" id="5_37aao"]
+[ext_resource type="Texture2D" uid="uid://c21nmlpb6utx" path="res://Sprites/Characters/cat.png" id="6_aou6w"]
+[ext_resource type="Script" uid="uid://dmoawkqvf3l4g" path="res://dogSpawner.gd" id="6_btmvg"]
+[ext_resource type="PackedScene" uid="uid://cwe4rjgvvwvdg" path="res://Scenes/dog.tscn" id="7_t75an"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyhkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_epkv8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epkv8"]
+atlas = ExtResource("6_aou6w")
+region = Rect2(0, 0, 388, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gtmq"]
+atlas = ExtResource("6_aou6w")
+region = Rect2(388, 0, 388, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snp7k"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epkv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gtmq")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
-size = Vector2(642.1052, 536.8422)
+size = Vector2(288.57153, 234.28583)
 
 [node name="Node2D" type="Node2D" unique_id=1064268551]
+script = ExtResource("1_iv07e")
 
-[node name="1000F435971308ATwd3k5HitGplZPfhN1ReEDf7Wmzigk8" type="Sprite2D" parent="." unique_id=1268691053]
-position = Vector2(587, 357.00003)
-scale = Vector2(1.2456896, 1.2456895)
-texture = ExtResource("1_86yrr")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=471168197]
+position = Vector2(572, 480.99997)
+scale = Vector2(0.615, 0.615)
+sprite_frames = SubResource("SpriteFrames_hyhkd")
+autoplay = "default"
 
 [node name="Laser" type="Sprite2D" parent="." unique_id=764337568]
 position = Vector2(540, 360)
 scale = Vector2(0.015, 0.015)
-texture = ExtResource("1_iltfy")
+texture = ExtResource("3_aou6w")
 script = ExtResource("1_mqgry")
 
 [node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
 position = Vector2(76.795, 545)
-scale = Vector2(0.095, 0.095)
+scale = Vector2(0.35, 0.35)
 collision_layer = 2
 script = ExtResource("3_0ofg4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cat" unique_id=744477204]
-texture = ExtResource("1_iltfy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cat" unique_id=818340018]
+sprite_frames = SubResource("SpriteFrames_snp7k")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1824263628]
-position = Vector2(0, -5.2631836)
+position = Vector2(7.7285614, 8.571411)
+scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("RectangleShape2D_hyhkd")
+
+[node name="DogSpawner" type="Node2D" parent="." unique_id=1978560163]
+script = ExtResource("6_btmvg")
+dog_scene = ExtResource("7_t75an")
 
 [node name="FishSpawner" type="Node2D" parent="." unique_id=996015113]
 script = ExtResource("4_lietn")
@@ -44,4 +91,100 @@ fish_scene = ExtResource("5_37aao")
 wait_time = 2.0
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=816358876]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1976725390]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -517.0
+offset_top = 24.0
+offset_right = -409.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Timer: 60"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1409000188]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -515.0
+offset_top = 58.0
+offset_right = -407.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fish: 0"
+vertical_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer" unique_id=971031273]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FishLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=893290737]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Fish:3"
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=142762758]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 42.0
+offset_right = 169.0
+offset_bottom = 65.0
+text = "Fish:3"
+
+[node name="TittleLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=117508504]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1321115686]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 177.0
+offset_right = 219.0
+offset_bottom = 208.0
+text = "Speed Upgrade"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=305415180]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 334.0
+offset_right = 217.0
+offset_bottom = 365.0
+text = "Restart"
+
+[node name="LuckyFishButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1881186460]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 256.0
+offset_right = 203.0
+offset_bottom = 287.0
+text = "Fish Upgrade"
+
+[node name="GameTimer" type="Timer" parent="." unique_id=765397626]
+autostart = true
+
 [connection signal="timeout" from="FishSpawner/Timer" to="FishSpawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/LuckyFishButton" to="." method="_on_lucky_fish_button_pressed"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

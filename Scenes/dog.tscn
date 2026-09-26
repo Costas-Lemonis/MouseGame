@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cwe4rjgvvwvdg"]
+
+[ext_resource type="Script" uid="uid://mrloif1eb4ax" path="res://dog.gd" id="1_nvlu8"]
+[ext_resource type="Texture2D" uid="uid://x0cyp014c63h" path="res://Sprites/Characters/dog.png" id="2_uny1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1yv2"]
+atlas = ExtResource("2_uny1q")
+region = Rect2(0, 0, 577, 389)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bno1h"]
+atlas = ExtResource("2_uny1q")
+region = Rect2(577, 0, 577, 389)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snp7k"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1yv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bno1h")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12smy"]
+size = Vector2(138.99615, 78.93608)
+
+[node name="Dog" type="Area2D" unique_id=1548906398]
+scale = Vector2(0.35, 0.35)
+collision_mask = 2
+script = ExtResource("1_nvlu8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=381198975]
+sprite_frames = SubResource("SpriteFrames_snp7k")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7891277
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=19402701]
+position = Vector2(-5.7142944, -2.8571424)
+scale = Vector2(3.3299997, 3.3299997)
+shape = SubResource("RectangleShape2D_12smy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

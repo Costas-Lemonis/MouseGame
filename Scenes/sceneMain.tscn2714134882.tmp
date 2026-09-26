@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ddjlqyhsi7wte"]
+
+[ext_resource type="Texture2D" uid="uid://bc4cu8spxejuu" path="res://Sprites/UI/1000_F_435971308_aTWD3k5hitGplZPfhN1ReEDf7wmzigk8.jpg" id="1_86yrr"]
+[ext_resource type="Texture2D" uid="uid://dvyigo2n7nyfx" path="res://Sprites/Characters/empty-orange-circle-png-0.png" id="1_iltfy"]
+[ext_resource type="Script" uid="uid://bs24jjnft17ro" path="res://mainScene.gd" id="1_iv07e"]
+[ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://laser.gd" id="1_mqgry"]
+[ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://cat_movement.gd" id="3_0ofg4"]
+[ext_resource type="Script" uid="uid://b8wwasljaddfw" path="res://fishSpawner.gd" id="4_lietn"]
+[ext_resource type="PackedScene" uid="uid://djk4ky5ff8e5n" path="res://Scenes/fish.tscn" id="5_37aao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
+size = Vector2(642.1052, 536.8422)
+
+[node name="Node2D" type="Node2D" unique_id=1064268551]
+script = ExtResource("1_iv07e")
+
+[node name="1000F435971308ATwd3k5HitGplZPfhN1ReEDf7Wmzigk8" type="Sprite2D" parent="." unique_id=1268691053]
+position = Vector2(550, 341.00003)
+scale = Vector2(1.2456896, 1.2456895)
+texture = ExtResource("1_86yrr")
+
+[node name="Laser" type="Sprite2D" parent="." unique_id=764337568]
+position = Vector2(540, 360)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("1_iltfy")
+script = ExtResource("1_mqgry")
+
+[node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
+position = Vector2(76.795, 545)
+scale = Vector2(0.095, 0.095)
+collision_layer = 2
+script = ExtResource("3_0ofg4")
+speed = 175.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Cat" unique_id=744477204]
+texture = ExtResource("1_iltfy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1824263628]
+position = Vector2(0, -5.2631836)
+shape = SubResource("RectangleShape2D_hyhkd")
+
+[node name="FishSpawner" type="Node2D" parent="." unique_id=996015113]
+script = ExtResource("4_lietn")
+fish_scene = ExtResource("5_37aao")
+
+[node name="Timer" type="Timer" parent="FishSpawner" unique_id=1186930914]
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=816358876]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1976725390]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 24.745
+offset_right = 54.0
+offset_bottom = 58.745003
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Timer: 60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1409000188]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 49.49
+offset_right = 54.0
+offset_bottom = 83.490005
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fish: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=765397626]
+autostart = true
+
+[connection signal="timeout" from="FishSpawner/Timer" to="FishSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_game_timer_timeout"]

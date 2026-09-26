@@ -1,20 +1,46 @@
 [gd_scene format=3 uid="uid://djk4ky5ff8e5n"]
 
-[ext_resource type="Script" uid="uid://dx8o8mlmnfbn8" path="res://fish.gd" id="1_c4ibo"]
-[ext_resource type="Texture2D" uid="uid://dvyigo2n7nyfx" path="res://Sprites/empty-orange-circle-png-0.png" id="1_twvwo"]
+[ext_resource type="Script" uid="uid://dx8o8mlmnfbn8" path="res://Scripts/fish.gd" id="1_c4ibo"]
+[ext_resource type="Texture2D" uid="uid://612vxcal5vhj" path="res://Sprites/Characters/fish.png" id="2_c4ibo"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_snp7k"]
-radius = 403.70187
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ibo"]
+atlas = ExtResource("2_c4ibo")
+region = Rect2(0, 0, 343, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fqy1"]
+atlas = ExtResource("2_c4ibo")
+region = Rect2(343, 0, 343, 243)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snp7k"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4ibo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fqy1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4ibo"]
+size = Vector2(312, 200)
 
 [node name="Fish" type="Area2D" unique_id=1770697195]
-scale = Vector2(0.055, 0.055)
+scale = Vector2(0.25, 0.25)
 collision_mask = 2
 script = ExtResource("1_c4ibo")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=431785964]
-texture = ExtResource("1_twvwo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=903897609]
+sprite_frames = SubResource("SpriteFrames_snp7k")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240040245]
-shape = SubResource("CircleShape2D_snp7k")
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_c4ibo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

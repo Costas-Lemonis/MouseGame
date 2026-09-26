@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
-# we let the speed value change in the inspector
-@export var speed := 250.0
+@export var speed := 100.0
 
-# we get the status of the laser.gd script to see in the lase is visible or not
 @onready var laser = $"../Laser"
 
-func _physics_process(delta):
-	#if  the laser is visible then the cat moves to laser's potition
+func _physics_process(_delta):
 	if laser.visible:
 		var direction = laser.global_position - global_position
 
