@@ -68,7 +68,7 @@ texture = ExtResource("3_aou6w")
 script = ExtResource("1_mqgry")
 
 [node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
-position = Vector2(76.795, 545)
+position = Vector2(100.795006, 545)
 scale = Vector2(0.35, 0.35)
 collision_layer = 2
 script = ExtResource("3_0ofg4")
@@ -101,9 +101,9 @@ autostart = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -519.0
+offset_left = -487.0
 offset_top = 24.0
-offset_right = -362.0
+offset_right = -330.0
 offset_bottom = 58.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -116,9 +116,9 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -515.0
+offset_left = -483.0
 offset_top = 59.0
-offset_right = -407.0
+offset_right = -375.0
 offset_bottom = 93.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -129,6 +129,7 @@ vertical_alignment = 1
 
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer" unique_id=971031273]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

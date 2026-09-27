@@ -2,11 +2,11 @@ extends Node2D
 
 @export var dog_scene: PackedScene
 
-
 func _ready() -> void:
 	call_deferred("spawn_dogs")
 
 func spawn_dogs() -> void:
+	# we appear 2-4 dogs randomly
 	var dog_count := randi_range(2, 4)
 
 	for i in range(dog_count):

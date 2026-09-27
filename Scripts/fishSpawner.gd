@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var fish_scene : PackedScene
-@export var max_fish := 3
+@export var max_fish := 4
 
 var current_fish := 0
 
@@ -26,7 +26,6 @@ func spawn_fish():
 
 func _on_fish_removed():
 	current_fish -= 1
-
 
 func _on_timer_timeout():
 	spawn_fish()
