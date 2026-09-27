@@ -6,9 +6,8 @@ extends Node2D
 func _ready() -> void:
 	call_deferred("spawn_dogs")
 
-
 func spawn_dogs() -> void:
-	var dog_count := randi_range(1, 3)
+	var dog_count := randi_range(2, 4)
 
 	for i in range(dog_count):
 		var dog = dog_scene.instantiate()

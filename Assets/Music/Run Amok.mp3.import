@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwpme13mwkoj4"
+path="res://.godot/imported/Run Amok.mp3-b6b8eef8f46f204ecb4cbb7e471ebcd5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Run Amok.mp3"
+dest_files=["res://.godot/imported/Run Amok.mp3-b6b8eef8f46f204ecb4cbb7e471ebcd5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

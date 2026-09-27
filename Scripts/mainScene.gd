@@ -125,7 +125,7 @@ func update_upgrade_buttons():
 	if lucky_fish_enabled:
 		lucky_fish_button.text = "Lucky Fish: Purchased"
 	else:
-		lucky_fish_button.text = "Lucky Fish 1-3 (5 Fish)"
+		lucky_fish_button.text = "Lucky Fish 1-3 (50 Fish)"
 
 func lose_fish(amount: int) -> void:
 	score -= amount

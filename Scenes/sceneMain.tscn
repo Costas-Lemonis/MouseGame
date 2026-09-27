@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c21nmlpb6utx" path="res://Sprites/Characters/cat.png" id="6_aou6w"]
 [ext_resource type="Script" uid="uid://dmoawkqvf3l4g" path="res://dogSpawner.gd" id="6_btmvg"]
 [ext_resource type="PackedScene" uid="uid://cwe4rjgvvwvdg" path="res://Scenes/dog.tscn" id="7_t75an"]
+[ext_resource type="FontFile" uid="uid://l4j50daoni1g" path="res://Assets/Fonts/RuthlessSketch.ttf" id="11_epkv8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hyhkd"]
 animations = [{
@@ -47,6 +48,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
 size = Vector2(288.57153, 234.28583)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwpa0"]
+texture = ExtResource("2_epkv8")
 
 [node name="Node2D" type="Node2D" unique_id=1064268551]
 script = ExtResource("1_iv07e")
@@ -97,13 +101,14 @@ autostart = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -517.0
+offset_left = -519.0
 offset_top = 24.0
-offset_right = -409.0
+offset_right = -362.0
 offset_bottom = 58.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 28
 text = "Timer: 60"
 vertical_alignment = 1
 
@@ -112,12 +117,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -515.0
-offset_top = 58.0
+offset_top = 59.0
 offset_right = -407.0
-offset_bottom = 92.0
+offset_bottom = 93.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 28
 text = "Fish: 0"
 vertical_alignment = 1
 
@@ -128,57 +134,76 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vwpa0")
 
 [node name="FishLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=893290737]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Fish:3"
+offset_left = 330.0
+offset_top = 253.0
+offset_right = 551.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 28
+text = "Fish available: 3"
 
 [node name="MessageLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=142762758]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 42.0
-offset_right = 169.0
-offset_bottom = 65.0
-text = "Fish:3"
+offset_left = 457.0
+offset_top = 176.0
+offset_right = 700.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 28
+text = "Choose an upgrade"
 
 [node name="TittleLabel" type="Label" parent="CanvasLayer/GameOverPanel" unique_id=117508504]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -43.5
-offset_right = 43.5
-offset_bottom = 23.0
+offset_left = -134.0
+offset_top = 105.0
+offset_right = 134.0
+offset_bottom = 170.0
 grow_horizontal = 2
-text = "Game Over"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 56
+text = "end round"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1321115686]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 177.0
-offset_right = 219.0
-offset_bottom = 208.0
+offset_left = 324.0
+offset_top = 391.0
+offset_right = 488.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 24
 text = "Speed Upgrade"
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=305415180]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 334.0
-offset_right = 217.0
-offset_bottom = 365.0
-text = "Restart"
+offset_left = 685.0
+offset_top = 298.0
+offset_right = 831.0
+offset_bottom = 375.0
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 24
+text = "next round"
 
 [node name="LuckyFishButton" type="Button" parent="CanvasLayer/GameOverPanel" unique_id=1881186460]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 256.0
-offset_right = 203.0
-offset_bottom = 287.0
-text = "Fish Upgrade"
+offset_left = 321.0
+offset_top = 298.0
+offset_right = 586.0
+offset_bottom = 373.0
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 24
+text = "Lucky Fish 1-3 (50 Fish)"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=765397626]
 autostart = true
