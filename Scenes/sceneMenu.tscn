@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ugi7xnebkkwc" path="res://Sprites/white-clean-crumpled-checkered-paper-vector.jpg" id="2_aqgyp"]
 [ext_resource type="FontFile" uid="uid://l4j50daoni1g" path="res://Assets/Fonts/RuthlessSketch.ttf" id="3_4jyt2"]
 [ext_resource type="Texture2D" uid="uid://ce1c0cj8b5n2m" path="res://Sprites/Characters/laser.png" id="4_67m5d"]
-[ext_resource type="Texture2D" uid="uid://c21nmlpb6utx" path="res://Sprites/Characters/cat.png" id="5_kfiwx"]
-[ext_resource type="Texture2D" uid="uid://612vxcal5vhj" path="res://Sprites/Characters/fish.png" id="6_d4nhu"]
-[ext_resource type="Texture2D" uid="uid://x0cyp014c63h" path="res://Sprites/Characters/dog.png" id="7_ry5qw"]
+[ext_resource type="PackedScene" uid="uid://sydp3t8d1o4c" path="res://Scenes/cat.tscn" id="7_4jyt2"]
+[ext_resource type="PackedScene" uid="uid://djk4ky5ff8e5n" path="res://Scenes/fish.tscn" id="7_aqgyp"]
+[ext_resource type="PackedScene" uid="uid://cwe4rjgvvwvdg" path="res://Scenes/dog.tscn" id="8_4jyt2"]
 
 [node name="MainMenu" type="Control" unique_id=321014986]
 layout_mode = 3
@@ -57,44 +57,30 @@ theme_override_font_sizes/font_size = 24
 text = "Start"
 
 [node name="Laser" type="Sprite2D" parent="." unique_id=1288473904]
-position = Vector2(595, 164.45262)
+position = Vector2(723.00006, 236.45259)
 scale = Vector2(0.024830656, 0.024830654)
 texture = ExtResource("4_67m5d")
 
-[node name="Cat" type="Sprite2D" parent="." unique_id=627034919]
-position = Vector2(178.80104, 437.63898)
-rotation = -0.14450611
-scale = Vector2(0.5435609, 0.54356086)
-texture = ExtResource("5_kfiwx")
-region_enabled = true
-region_rect = Rect2(387, 1, 389, 369)
+[node name="Dog2" parent="." unique_id=1548906398 instance=ExtResource("8_4jyt2")]
+position = Vector2(738, 523)
+scale = Vector2(0.47, 0.47)
 
-[node name="Fish" type="Sprite2D" parent="." unique_id=1219725962]
-position = Vector2(937.99994, 327)
-scale = Vector2(0.34773663, 0.34773663)
-texture = ExtResource("6_d4nhu")
-region_enabled = true
-region_rect = Rect2(342, 0, 344, 243)
+[node name="Fish" parent="." unique_id=1770697195 instance=ExtResource("7_aqgyp")]
+position = Vector2(1017, 462)
 
-[node name="Fish2" type="Sprite2D" parent="." unique_id=1258105424]
-position = Vector2(1025, 544)
-scale = Vector2(0.34773663, 0.34773663)
-texture = ExtResource("6_d4nhu")
-region_enabled = true
-region_rect = Rect2(342, 0, 344, 243)
+[node name="Fish2" parent="." unique_id=625717468 instance=ExtResource("7_aqgyp")]
+position = Vector2(884, 322)
 
-[node name="Dog" type="Sprite2D" parent="." unique_id=1401987170]
-position = Vector2(747, 523)
-scale = Vector2(0.4948586, 0.49485862)
-texture = ExtResource("7_ry5qw")
-region_enabled = true
-region_rect = Rect2(576, 0, 578, 389)
+[node name="Fish3" parent="." unique_id=33390492 instance=ExtResource("7_aqgyp")]
+position = Vector2(775, 154)
 
-[node name="Fish3" type="Sprite2D" parent="." unique_id=116438079]
-position = Vector2(631, 101)
-scale = Vector2(0.34773663, 0.34773663)
-texture = ExtResource("6_d4nhu")
-region_enabled = true
-region_rect = Rect2(342, 0, 344, 243)
+[node name="Fish4" parent="." unique_id=56212198 instance=ExtResource("7_aqgyp")]
+position = Vector2(367, 155)
+
+[node name="Cat2" parent="." unique_id=150639627 instance=ExtResource("7_4jyt2")]
+position = Vector2(212, 469.00006)
+rotation = -0.13991287
+scale = Vector2(0.63479495, 0.6281617)
+speed = 0.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

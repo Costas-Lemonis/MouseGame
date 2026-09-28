@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://bs24jjnft17ro" path="res://Scripts/mainScene.gd" id="1_iv07e"]
 [ext_resource type="Script" uid="uid://k5b7xsbojto5" path="res://Scripts/laser.gd" id="1_mqgry"]
 [ext_resource type="Texture2D" uid="uid://es8rppfyjllf" path="res://Sprites/white-clean-crumpled-checkered-paper-vector2.jpg" id="2_epkv8"]
-[ext_resource type="Script" uid="uid://d1jvdjs35kbs2" path="res://Scripts/cat_movement.gd" id="3_0ofg4"]
 [ext_resource type="Texture2D" uid="uid://ce1c0cj8b5n2m" path="res://Sprites/Characters/laser.png" id="3_aou6w"]
 [ext_resource type="Script" uid="uid://b8wwasljaddfw" path="res://Scripts/fishSpawner.gd" id="4_lietn"]
 [ext_resource type="PackedScene" uid="uid://djk4ky5ff8e5n" path="res://Scenes/fish.tscn" id="5_37aao"]
-[ext_resource type="Texture2D" uid="uid://c21nmlpb6utx" path="res://Sprites/Characters/cat.png" id="6_aou6w"]
+[ext_resource type="PackedScene" uid="uid://sydp3t8d1o4c" path="res://Scenes/cat.tscn" id="5_aou6w"]
 [ext_resource type="Script" uid="uid://dmoawkqvf3l4g" path="res://dogSpawner.gd" id="6_btmvg"]
 [ext_resource type="PackedScene" uid="uid://cwe4rjgvvwvdg" path="res://Scenes/dog.tscn" id="7_t75an"]
 [ext_resource type="FontFile" uid="uid://l4j50daoni1g" path="res://Assets/Fonts/RuthlessSketch.ttf" id="11_epkv8"]
@@ -22,32 +21,6 @@ animations = [{
 "name": &"default",
 "speed": 1.5
 }]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epkv8"]
-atlas = ExtResource("6_aou6w")
-region = Rect2(0, 0, 388, 370)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gtmq"]
-atlas = ExtResource("6_aou6w")
-region = Rect2(388, 0, 388, 370)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_snp7k"]
-resource_local_to_scene = true
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epkv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4gtmq")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 3.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhkd"]
-size = Vector2(288.57153, 234.28583)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwpa0"]
 texture = ExtResource("2_epkv8")
@@ -67,21 +40,8 @@ scale = Vector2(0.015, 0.015)
 texture = ExtResource("3_aou6w")
 script = ExtResource("1_mqgry")
 
-[node name="Cat" type="CharacterBody2D" parent="." unique_id=1035171070]
+[node name="Cat" parent="." unique_id=150639627 instance=ExtResource("5_aou6w")]
 position = Vector2(100.795006, 545)
-scale = Vector2(0.35, 0.35)
-collision_layer = 2
-script = ExtResource("3_0ofg4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cat" unique_id=818340018]
-sprite_frames = SubResource("SpriteFrames_snp7k")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1824263628]
-position = Vector2(7.7285614, 8.571411)
-scale = Vector2(0.9999995, 0.9999995)
-shape = SubResource("RectangleShape2D_hyhkd")
 
 [node name="DogSpawner" type="Node2D" parent="." unique_id=1978560163]
 script = ExtResource("6_btmvg")
@@ -205,6 +165,21 @@ offset_bottom = 373.0
 theme_override_fonts/font = ExtResource("11_epkv8")
 theme_override_font_sizes/font_size = 24
 text = "Lucky Fish 1-3 (50 Fish)"
+
+[node name="Info" type="Label" parent="CanvasLayer" unique_id=1958939019]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 252.0
+offset_top = 24.0
+offset_right = 522.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_epkv8")
+theme_override_font_sizes/font_size = 28
+text = "lmb to enable laser"
+vertical_alignment = 1
 
 [node name="GameTimer" type="Timer" parent="." unique_id=765397626]
 autostart = true
